@@ -1,0 +1,30 @@
+{
+  "name": "directory-tree-webpack-plugin",
+  "version": "0.1.0",
+  "description": "Store a JSON mapping of a directory.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skipjack/directory-tree-webpack-plugin.git"
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "directory-tree",
+    "directory",
+    "structure"
+  ],
+  "author": "Greg Venech",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skipjack/directory-tree-webpack-plugin/issues"
+  },
+  "homepage": "https://github.com/skipjack/directory-tree-webpack-plugin#readme",
+  "dependencies": {
+    "directory-tree": "^2.0.0",
+    "front-matter": "^2.2.0"
+  }
+}
