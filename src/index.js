@@ -35,7 +35,7 @@ module.exports = class DirectoryTreePlugin {
             tree = DirectoryTree(dir, this._treeOptions),
             modified = this._restructure(tree),
             json = JSON.stringify(modified),
-            current = FS.existsSync(json) ? FS.readFileSync(path, { encoding: 'utf8' }) : ''
+            current = FS.existsSync(path) ? FS.readFileSync(path, { encoding: 'utf8' }) : ''
 
         if (json !== current) {
             FS.writeFile(path, json, error => {
