@@ -30,5 +30,8 @@
   },
   "devDependencies": {
     "standard-version": "^4.2.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
