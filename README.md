@@ -92,14 +92,34 @@ The following options can be passed to the plugin:
 
 - `dir` (string): A path to the directory that should be mapped.
 - `path` (string): The path to and filename of the JSON file to create.
+- `enhance` (func): A function to execute on every item in the tree (see below).
 
 All the remaining options are passed to the `directory-tree` package. See that
 package's [documentation][1] for a listing of all available options.
 
-> TODO: There is also a rather opinionated recursive enhancer method that takes
-> the output of `directory-tree` and enhances it with YAML frontmatter and such.
-> We should probably extract the opinionated bits to an `enhance` method that is
-> passed as an option.
+
+## Enhancing the Output
+
+To customize each item in the tree, simply pass an `enhance` method. When this
+option is passed, the plugin will recurse through the tree calling it on every
+item. Here's a small example of how it can be used to change each item's `path`:
+
+``` js
+new DirectoryTreePlugin({
+  dir: './src/content',
+  path: './src/_content.json',
+  extensions: /\.md/,
+  enhance: (item, options) => {
+    item.path = item.path.replace(options.dir, '')
+    return item
+  }
+})
+```
+
+The first parameter given to the method is the `item` and the second, `options`,
+contains the same options object passed to the plugin. Note that this function
+__MUST__ be deterministic, if it isn't an infinite loop of tree generation will
+occur.
 
 
 [1]: https://github.com/mihneadb/node-directory-tree
