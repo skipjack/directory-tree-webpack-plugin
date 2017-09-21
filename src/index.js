@@ -1,7 +1,5 @@
 // Import External Dependencies
-const Path = require('path')
 const FS = require('fs')
-const FrontMatter = require('front-matter')
 const DirectoryTree = require('directory-tree')
 
 /**
@@ -12,12 +10,13 @@ const DirectoryTree = require('directory-tree')
  */
 module.exports = class DirectoryTreePlugin {
     constructor(options) {
-        let { dir, path } = options
+        let { dir, path, enhance } = options
 
-        this._options = { dir, path }
+        this._options = { dir, path, enhance }
 
         delete options.dir
         delete options.path
+        delete options.enhance
 
         this._treeOptions = options
     }
@@ -31,9 +30,9 @@ module.exports = class DirectoryTreePlugin {
      * 
      */
     _buildTree() {
-        let { dir, path } = this._options,
+        let { dir, path, enhance } = this._options,
             tree = DirectoryTree(dir, this._treeOptions),
-            modified = this._restructure(tree),
+            modified = enhance ? this._restructure(tree) : tree,
             json = JSON.stringify(modified),
             current = FS.existsSync(path) ? FS.readFileSync(path, { encoding: 'utf8' }) : ''
 
@@ -53,30 +52,10 @@ module.exports = class DirectoryTreePlugin {
      * @return {object}      - An enhanced `tree` structure
      */
     _restructure(item) {
-        let { dir } = this._options,
-            base = Path.dirname(item.path).replace('src/content', ''),
-            isDirectory = item.type === 'directory',
-            fmFilePath = isDirectory ? `${item.path}/index.md` : item.path,
-            frontmatter = FS.existsSync(fmFilePath) ? FrontMatter(
-                FS.readFileSync(fmFilePath, { encoding: 'utf8' })
-            ) : null
+        let allOptions = Object.assign(this._options, this._treeOptions)
 
-        item.name = Path.basename(item.path, '.md')
-        item.path = `${base}/${item.name}`
-        item.depth = item.path.split('/').length - 1
+        this._options.enhance(item, allOptions)
 
-        // Set `attributes` based on frontmatter
-        if ( frontmatter !== null ) {
-            item.attributes = isDirectory ? frontmatter.attributes.directory : frontmatter.attributes
-
-        } else item.attributes = {}
-
-        // Include `indexPath` for index pages
-        if ( item.name === 'index' ) {
-            item.indexPath = base || '/'
-        }
-
-        // Recurse through children
         if ( item.children ) {
             item.children.forEach(child => {
                 this._restructure(child)
