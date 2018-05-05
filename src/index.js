@@ -10,13 +10,15 @@ const DirectoryTree = require('directory-tree')
  */
 module.exports = class DirectoryTreePlugin {
     constructor(options) {
-        let { dir, path, enhance } = options
+        let { dir, path, enhance, filter, sort } = options
 
-        this._options = { dir, path, enhance }
+        this._options = { dir, path, enhance, filter, sort }
 
         delete options.dir
         delete options.path
         delete options.enhance
+        delete options.filter
+        delete options.sort
 
         this._treeOptions = options
     }
@@ -30,9 +32,10 @@ module.exports = class DirectoryTreePlugin {
      * 
      */
     _buildTree() {
-        let { dir, path, enhance } = this._options,
+        let { dir, path, enhance, filter, sort } = this._options,
             tree = DirectoryTree(dir, this._treeOptions),
-            modified = enhance ? this._restructure(tree) : tree,
+            shouldRestructure = !!enhance || !!filter || !!sort,
+            modified = shouldRestructure ? this._restructure(tree) : tree,
             json = JSON.stringify(modified),
             current = FS.existsSync(path) ? FS.readFileSync(path, { encoding: 'utf8' }) : ''
 
@@ -52,11 +55,15 @@ module.exports = class DirectoryTreePlugin {
      * @return {object}      - An enhanced `tree` structure
      */
     _restructure(item) {
-        let allOptions = Object.assign(this._options, this._treeOptions)
+        let { enhance, filter, sort } = this._options,
+            allOptions = Object.assign(this._options, this._treeOptions)
 
-        this._options.enhance(item, allOptions)
+        if ( enhance ) enhance(item, allOptions)
 
         if ( item.children ) {
+            if ( filter ) item.children = item.children.filter(filter)
+            if ( sort ) item.children = item.children.sort(sort)
+
             item.children.forEach(child => {
                 this._restructure(child)
             })
