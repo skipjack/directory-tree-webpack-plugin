@@ -61,12 +61,12 @@ module.exports = class DirectoryTreePlugin {
         if ( enhance ) enhance(item, allOptions)
 
         if ( item.children ) {
-            if ( filter ) item.children = item.children.filter(filter)
-            if ( sort ) item.children = item.children.sort(sort)
-
             item.children.forEach(child => {
                 this._restructure(child)
             })
+
+            if ( filter ) item.children = item.children.filter(filter)
+            if ( sort ) item.children = item.children.sort(sort)
         }
 
         return item
