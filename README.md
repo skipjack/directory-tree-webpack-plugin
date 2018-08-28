@@ -1,4 +1,5 @@
-# Directory Tree Plugin
+Directory Tree Plugin
+---------------------
 
 This plugin allows you to generate a JSON representation of a directory and all
 its child nodes (files and folders). It uses the fantastic [directory-tree][1]
@@ -13,10 +14,10 @@ npm i --save-dev directory-tree-webpack-plugin
 
 ## Usage
 
-This plugin is particularly useful when using [dynamic `import()`][2] statements
-as you can get a mapping of all the items in the `import(...)` location. For example,
-let's say we wanted to dynamically `import()` all `*.md` pages within a content 
-directory:
+This plugin is particularly useful when using [dynamic `import()`][2] 
+statements as you can get a mapping of all the items in the `import(...)`
+location. For example, let's say we wanted to dynamically `import()` all `*.md`
+pages within a content directory:
 
 __project__
 
@@ -82,8 +83,9 @@ ContentTree.children.forEach(page => {
 })
 ```
 
-> Note that the example above uses promises and arrow functions. In a real app, you
-> would likely polyfill these ES6+ features to ensure they work on older browsers.
+> Note that the example above uses promises and arrow functions. In a real 
+> app, you would likely polyfill these ES6+ features to ensure they work on
+> older browsers.
 
 
 ## Options
