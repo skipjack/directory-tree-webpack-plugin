@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/skipjack/directory-tree-webpack-plugin/compare/v0.3.1...v1.0.0) (2018-08-31)
+
+
+### Chores
+
+* migrate to new webpack plugin api ([c5e0f99](https://github.com/skipjack/directory-tree-webpack-plugin/commit/c5e0f99))
+
+
+### BREAKING CHANGES
+
+* This plugin is no longer compatible with
+webpack v3. Either migrate to webpack v4 or use v0.3.x of this
+plugin.
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/skipjack/directory-tree-webpack-plugin/compare/v0.3.0...v0.3.1) (2018-05-05)
 
