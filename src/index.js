@@ -24,7 +24,7 @@ module.exports = class DirectoryTreePlugin {
     }
 
     apply(compiler) {
-        compiler.plugin('compile', this._buildTree.bind(this))
+        compiler.hooks.compile.tap('DirectoryTreeWebpackPlugin', this._buildTree.bind(this))
     }
 
     /**
