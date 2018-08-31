@@ -3,7 +3,8 @@ Directory Tree Plugin
 
 This plugin allows you to generate a JSON representation of a directory and all
 its child nodes (files and folders). It uses the fantastic [directory-tree][1]
-package, which does the majority of the work.
+package, which does the majority of the work although some additional options
+are provided (see below).
 
 Install the plugin via NPM:
 
@@ -102,6 +103,8 @@ The following options can be passed to the plugin:
 - `dir` (string): A path to the directory that should be mapped.
 - `path` (string): The path to and filename of the JSON file to create.
 - `enhance` (func): A function to execute on every item in the tree (see below).
+- `filter` (func): A `.filter` callback run on each layer of `children`.
+- `sort` (func): A `.sort` callback run on each layer of `children`.
 
 All the remaining options are passed to the `directory-tree` package. See that
 package's [documentation][1] for a listing of all available options.
