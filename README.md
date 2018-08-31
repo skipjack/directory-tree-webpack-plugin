@@ -11,6 +11,13 @@ Install the plugin via NPM:
 npm i --save-dev directory-tree-webpack-plugin
 ```
 
+The latest version of the plugin is compatible with webpack v4+. To use this
+plugin with webpack v3, install `v0.3.x`:
+
+``` bash
+npm i --save-dev directory-tree-webpack-plugin@0.3
+```
+
 
 ## Usage
 
