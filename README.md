@@ -1,5 +1,8 @@
+[![NPM Version][7]][5]
+[![Standard Version][8]][6]
+
 Directory Tree Plugin
----------------------
+=====================
 
 This plugin allows you to generate a JSON representation of a directory and all
 its child nodes (files and folders). It uses the fantastic [directory-tree][1]
@@ -136,3 +139,7 @@ occur.
 
 [1]: https://github.com/mihneadb/node-directory-tree
 [2]: https://webpack.js.org/api/module-methods/#import-1
+[5]: https://www.npmjs.com/package/react-banner
+[6]: https://github.com/conventional-changelog/standard-version
+[7]: https://img.shields.io/npm/v/react-banner.svg
+[8]: https://img.shields.io/badge/release-standard%20version-brightgreen.svg
