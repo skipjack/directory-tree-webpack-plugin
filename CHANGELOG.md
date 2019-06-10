@@ -1,6 +1,15 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [1.0.1](https://github.com/skipjack/directory-tree-webpack-plugin/compare/v1.0.0...v1.0.1) (2019-06-10)
+
+
+### Bug Fixes
+
+* **deps:** fix various audit warnings/vulns ([e2034b4](https://github.com/skipjack/directory-tree-webpack-plugin/commit/e2034b4))
+
+
 
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/skipjack/directory-tree-webpack-plugin/compare/v0.3.1...v1.0.0) (2018-08-31)
