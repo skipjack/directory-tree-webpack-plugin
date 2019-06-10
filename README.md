@@ -139,7 +139,7 @@ occur.
 
 [1]: https://github.com/mihneadb/node-directory-tree
 [2]: https://webpack.js.org/api/module-methods/#import-1
-[5]: https://www.npmjs.com/package/react-banner
+[5]: https://www.npmjs.com/package/directory-tree-webpack-plugin
 [6]: https://github.com/conventional-changelog/standard-version
-[7]: https://img.shields.io/npm/v/react-banner.svg
+[7]: https://img.shields.io/npm/v/directory-tree-webpack-plugin.svg
 [8]: https://img.shields.io/badge/release-standard%20version-brightgreen.svg
