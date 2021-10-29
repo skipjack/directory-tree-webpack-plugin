@@ -126,13 +126,12 @@ new DirectoryTreePlugin({
   extensions: /\.md/,
   enhance: (item, options) => {
     item.path = item.path.replace(options.dir, '')
-    return item
   }
 })
 ```
 
 The first parameter given to the method is the `item` and the second, `options`,
-contains the same options object passed to the plugin. Note that this function
+contains the same options object passed to the plugin. The enhance function makes changes to the `item` object directly. Note that this function
 __MUST__ be deterministic, if it isn't an infinite loop of tree generation will
 occur.
 
