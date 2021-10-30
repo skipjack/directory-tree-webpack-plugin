@@ -131,9 +131,9 @@ new DirectoryTreePlugin({
 ```
 
 The first parameter given to the method is the `item` and the second, `options`,
-contains the same options object passed to the plugin. The enhance function makes changes to the `item` object directly. Note that this function
-__MUST__ be deterministic, if it isn't an infinite loop of tree generation will
-occur.
+contains the same options object passed to the plugin. The `enhance` function
+makes changes to the `item` object directly. Note that this function __MUST__ be
+deterministic, otherwise an infinite loop of tree generation will occur.
 
 
 [1]: https://github.com/mihneadb/node-directory-tree
