@@ -1,6 +1,6 @@
 {
   "name": "directory-tree-webpack-plugin",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Store a JSON mapping of a directory.",
   "main": "src/index.js",
   "scripts": {
